@@ -11,8 +11,8 @@ import (
 	"strconv"
 )
 
-const shaPath string = "/go/sha256"
-const writePath string = "/go/write"
+const shaPath string = "/sha"
+const writePath string = "/write"
 
 func main() {
 	http.HandleFunc("/", handler)
