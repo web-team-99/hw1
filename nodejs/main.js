@@ -1,11 +1,11 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const app = express();
 const cors = require("cors");
 const fs = require("fs");
 const crypto = require("crypto");
 const port = 3000;
 
-// Simple Usage (Enable All CORS Requests)
 app.use(cors());
 
 app.get("/write", (req, res) => {
@@ -25,12 +25,14 @@ app.get("/write", (req, res) => {
   }
 });
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 app.post("/sha", (req, res) => {
   let a = req.body.a;
   let b = req.body.b;
-  if (typeof a != "number" || typeof b != "number") {
+  if (isNaN(a) || isNaN(b)) {
     res.json({
       result: "error! please inter a number."
     });
