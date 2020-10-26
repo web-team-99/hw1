@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -71,8 +72,8 @@ func postRequestOnSHA256(w *http.ResponseWriter, r *http.Request) {		//Handle th
 	sum := fnumint + snumint
 
 	hash := sha256.Sum256([]byte(strconv.Itoa(sum)))
-	hashmap := map[string][32]byte{"value": hash}
-	jsonRes, _ := json.Marshal(hashmap)
+	result := base64.StdEncoding.EncodeToString(hash[:])
+	jsonRes, _ := json.Marshal(map[string] string{"value": result})
 
 	writer(http.StatusOK, jsonRes, w)
 	return
