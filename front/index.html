@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>HW1</title>
+    <script src="main.js" ></script>
     <link rel="stylesheet" href="main.css" />
     <link
       rel="stylesheet"
@@ -81,7 +82,7 @@
       <hr class="spliter" />
 
       <div class="write">
-        <h1 class="header">sha-256</h1>
+        <h1 class="header">Write</h1>
 
         <br />
 
@@ -91,7 +92,7 @@
           </div>
           <input
             type="number"
-            id="num1"
+            id="lineNum"
             placeholder="Line number"
             class="form-control"
           />
@@ -103,6 +104,7 @@
         <br />
         <span>
           <button
+          onclick="onGoWriteClicked()"
             type="button"
             class="btn btn-outline-success enc-btn"
             id="go-enc-button"
@@ -110,6 +112,7 @@
             go write
           </button>
           <button
+            onclick="onNodeWriteClicked()"
             type="button"
             class="btn btn-outline-danger enc-btn"
             id="node-enc-button"
@@ -121,9 +124,9 @@
         <br />
         <br />
 
-        <h3 class="badge badge-success" id="go-sha">go-write</h3>
+        <h3 class="badge badge-success" id="go-write">go-write</h3>
         <br />
-        <h3 class="badge badge-danger" id="node-sha">node-write</h3>
+        <h3 class="badge badge-danger" id="node-write">node-write</h3>
       </div>
     </div>
   </body>
