@@ -15,7 +15,7 @@
   <body>
     <div>
       <div class="add-numbers">
-        <h1 class="header">two number sha-256</h1>
+        <h1 class="header">sha-256</h1>
 
         <br />
 
@@ -81,7 +81,49 @@
       <hr class="spliter" />
 
       <div class="write">
-        <h1 class="header">write</h1>
+        <h1 class="header">sha-256</h1>
+
+        <br />
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">1 &#8804;</span>
+          </div>
+          <input
+            type="number"
+            id="num1"
+            placeholder="Line number"
+            class="form-control"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text">&#8804; 100</span>
+          </div>
+        </div>
+
+        <br />
+        <span>
+          <button
+            type="button"
+            class="btn btn-outline-success enc-btn"
+            id="go-enc-button"
+          >
+            go write
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger enc-btn"
+            id="node-enc-button"
+          >
+            node write
+          </button>
+        </span>
+
+        <br />
+        <br />
+
+        <h3 class="badge badge-success" id="go-sha">go-write</h3>
+        <br />
+        <h3 class="badge badge-danger" id="node-sha">node-write</h3>
       </div>
     </div>
   </body>
