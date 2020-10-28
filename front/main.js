@@ -1,8 +1,8 @@
 function onNodeWriteClicked(){
-    // console.log("clicked");
     let lineNum = document.getElementById("lineNum").value;
     let write = document.getElementById("node-write");
     fetch('http://192.168.1.101/node/write?'+ new URLSearchParams({num: lineNum,}))
+    // fetch('http://localhost:3000/write?'+ new URLSearchParams({num: lineNum,}))
     .then(
       function(response) {
         if (response.status !== 200) {
@@ -22,7 +22,6 @@ function onNodeWriteClicked(){
 
 
 function onGoWriteClicked(){
-    // console.log("clicked");
     let lineNum = document.getElementById("lineNum").value;
     let write = document.getElementById("go-write");
     fetch('http://192.168.1.101/go/go/write?'+ new URLSearchParams({lineNumber: lineNum,}))

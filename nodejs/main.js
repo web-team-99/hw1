@@ -11,11 +11,11 @@ app.use(cors());
 app.get("/write", (req, res) => {
   let num = req.query.num;
   if (isNaN(num)) {
-    res.send("error! please inter a number.");
+    res.status(406).send({message: "error! please inter a number."});
   } else {
     num = +num;
     if (num < 1 || num > 100) {
-      res.send("error! please inter a valid number.");
+      res.status(406).send({message: "error! please inter a valid number."});
     } else {
       fs.readFile("textFile.txt", "utf8", (err, data) => {
         if (err) throw err;
@@ -33,9 +33,10 @@ app.post("/sha", (req, res) => {
   let a = req.body.a;
   let b = req.body.b;
   if (isNaN(a) || isNaN(b)) {
-    res.json({
-      result: "error! please inter a number."
-    });
+    // res.json({
+    //   result: "error! please inter a number."
+    // });
+    res.status(406).send({message: "error! please inter a number."});
   } else {
     res.json({
       result: crypto
