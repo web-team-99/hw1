@@ -1,12 +1,18 @@
 * {
   text-align: center;
+  background-color: rgb(10, 10, 56);
 }
 
-.num {
-  display: inline-block;
+.add-numbers {
+  width: 25%;
+  margin: 0 auto;
 }
 
-.inp {
-  display: inline-block;
+.header {
+  color: ghostwhite;
 }
 
+.spliter {
+  border-width: 20px;
+  background-color: ghostwhite;
+}
