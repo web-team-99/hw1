@@ -13,6 +13,11 @@
 }
 
 .spliter {
-  border-width: 20px;
+  border-width: 5px;
   background-color: ghostwhite;
+}
+
+.enc-btn {
+  margin-right: 50px;
+  margin-left: 50px;
 }
