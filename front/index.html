@@ -56,6 +56,7 @@
         <br />
         <span>
           <button
+            onclick="goBtnClicked()"
             type="button"
             class="btn btn-outline-success enc-btn"
             id="go-enc-button"
@@ -63,6 +64,7 @@
             go encrypt
           </button>
           <button
+            onclick="nodeBtnClicked()"
             type="button"
             class="btn btn-outline-danger enc-btn"
             id="node-enc-button"
@@ -75,8 +77,10 @@
         <br />
 
         <h3 class="badge badge-success" id="go-sha">go-sha</h3>
+        <textarea id="go-response"></textarea>
         <br />
         <h3 class="badge badge-danger" id="node-sha">node-sha</h3>
+        <textarea id="node-response"></textarea>
       </div>
 
       <hr class="spliter" />

@@ -60,20 +60,18 @@ func getRequestOnWritePath(w *http.ResponseWriter, r *http.Request) {		//Handle 
 }
 
 func postRequestOnSHA256(w *http.ResponseWriter, r *http.Request) {		//Handle the POST request.
-	fnum := r.FormValue("fnum")
-	snum := r.FormValue("snum")
+	fnum, ferr := strconv.ParseFloat(r.FormValue("fnum"), 64)
+	snum, serr:= strconv.ParseFloat(r.FormValue("snum"), 64)
 
-	fnumint, ferr := strconv.Atoi(fnum)
-	snumint, serr := strconv.Atoi(snum)
 	if ferr != nil || serr != nil {
 		writer(http.StatusNotAcceptable, []byte("Fields should be numbers!!!"), w)
 		return
 	}
-	sum := fnumint + snumint
+	sum := fnum + snum
 
-	hash := sha256.Sum256([]byte(strconv.Itoa(sum)))
+	hash := sha256.Sum256([]byte(fmt.Sprintf("%g", sum)))
 	result := base64.StdEncoding.EncodeToString(hash[:])
-	jsonRes, _ := json.Marshal(map[string] string{"value": result})
+	jsonRes, _ := json.Marshal(map[string] string{"result": result})
 
 	writer(http.StatusOK, jsonRes, w)
 	return
