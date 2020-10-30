@@ -52,7 +52,7 @@ func getRequestOnWritePath(w *http.ResponseWriter, r *http.Request) {		//Handle 
 	}
 	line, err := readSpecLine("data.txt", lnumber)
 	if err != nil {
-		writer(http.StatusNotAcceptable, []byte(fmt.Sprint(err)), w)
+		writer(http.StatusInternalServerError, []byte(fmt.Sprint(err)), w)
 		return
 	}
 	writer(http.StatusOK, []byte(line), w)
