@@ -64,7 +64,7 @@ function goBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://127.0.0.1:8080/sha";
+  let url = "http://127.0.0.1/go/sha";
   XMLHttpRequestSender(url, POST, [fnum, snum], "go-response");
 }
 
@@ -75,7 +75,7 @@ function nodeBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://127.0.0.1:3000/sha";
+  let url = "http://127.0.0.1/node/sha";
   XMLHttpRequestSender(url, POST, [fnum, snum], "node-response");
 }
 
