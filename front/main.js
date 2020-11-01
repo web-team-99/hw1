@@ -5,7 +5,7 @@ function onNodeWriteClicked() {
     return;
   }
   let write = document.getElementById("node-write");
-  fetch('http://192.168.1.101/node/write?' + new URLSearchParams({ num: lineNum, }))
+  fetch('http://192.168.1.103/node/write?' + new URLSearchParams({ num: lineNum, }))
     // fetch('http://localhost:3000/write?'+ new URLSearchParams({num: lineNum,}))
     .then(
       function (response) {
@@ -13,7 +13,7 @@ function onNodeWriteClicked() {
           console.log('Looks like there was a problem. Status Code: ' + response.status);
           return;
         }
-        response.text().then((data) => {
+        response.text().then((ata) => {
           console.log(data);
           write.innerText = data;
         })
@@ -32,7 +32,7 @@ function onGoWriteClicked() {
     return;
   }
   let write = document.getElementById("go-write");
-  fetch('http://192.168.1.101/go/go/write?' + new URLSearchParams({ lineNumber: lineNum, }))
+  fetch('http://192.168.1.103/go/write?' + new URLSearchParams({ lineNumber: lineNum, }))
   // fetch('http://127.0.0.1:8080/write?' + new URLSearchParams({ lineNumber: lineNum, }))  
   .then(
       function (response) {
@@ -64,7 +64,7 @@ function goBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://127.0.0.1/go/sha";
+  let url = "http://192.168.1.103/go/sha";
   XMLHttpRequestSender(url, POST, [fnum, snum], "go-response");
 }
 
@@ -75,7 +75,7 @@ function nodeBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://127.0.0.1/node/sha";
+  let url = "http://192.168.1.103/node/sha";
   XMLHttpRequestSender(url, POST, [fnum, snum], "node-response");
 }
 
