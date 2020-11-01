@@ -37,6 +37,7 @@ function onGoWriteClicked() {
   .then(
       function (response) {
         if (response.status !== 200) {
+          showAlert(WRITE_ALERT_FAILED, response.statusText);
           console.log('Looks like there was a problem. Status Code: ' + response.status);
           return;
         }
@@ -47,6 +48,7 @@ function onGoWriteClicked() {
       }
     )
     .catch((err) => {
+      showAlert(WRITE_ALERT_FAILED, err);
       console.log('Fetch Error :-S', err);
     });
 }
@@ -56,6 +58,9 @@ const POST = "POST";
 const GET = "GET";
 const F_NUM_ID = "num1";
 const S_NUM_ID = "num2";
+const SHA_ALERT_FAILED = "sha-alert-failed";
+const WRITE_ALERT_FAILED = "write-alert-failed";
+
 
 function goBtnClicked() {
   let fnum = document.getElementById(F_NUM_ID).value;
@@ -64,7 +69,8 @@ function goBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://127.0.0.1:8080/sha";
+  let url = "http://192.168.43.215/go/sha";
+  // let url = "http://127.0.0.1:8080/sha";
   XMLHttpRequestSender(url, POST, [fnum, snum], "go-response");
 }
 
@@ -75,7 +81,8 @@ function nodeBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://127.0.0.1:3000/sha";
+  let url = "http://192.168.43.215/node/sha";
+  // let url = "http://127.0.0.1:3000/sha";
   XMLHttpRequestSender(url, POST, [fnum, snum], "node-response");
 }
 
@@ -88,11 +95,19 @@ function XMLHttpRequestSender(url, method, params, showRespondElementID) {
   if(method == POST){
     let body = "fnum=" + params[0] + "&snum=" + params[1];
     xhttp.onreadystatechange = function(){
-      if(this.readyState == 4 & this.status == 200){
+      if(this.readyState == 4 && this.status == 200){
         OnResponse(showRespondElementID, this.responseText);
+        document.getElementById(SHA_ALERT_FAILED).style.display = "none";
         return;
       }
-      //todo handle other errors
+      if(this.readyState == 4 && this.status != 200 && this.status != 0){
+        showAlert(SHA_ALERT_FAILED, this.status + ": " + this.responseText);
+        return;
+      }
+      if(this.readyState == 4 && this.status == 0){
+        showAlert(SHA_ALERT_FAILED, "Connection Refused!!! Check your connection and try again.");
+        return;
+      }
     }
     xhttp.open(method, url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -105,6 +120,9 @@ function validateShaInput(firstNumber, secondNumber){
   if(isNaN(firstNumber) || isNaN(secondNumber)){
     return false;
   }
+  if(firstNumber == "" || secondNumber == ""){
+    return false;
+  }
   return true;
 }
 
@@ -114,6 +132,12 @@ function performShake(id){
   setTimeout(function() {
     el.classList.remove("input-error-shake");
   }, 300);
+}
+
+function showAlert(id, text){
+  let el = document.getElementById(id);
+  el.innerHTML = text;
+  el.style.display = "block";
 }
 
 function OnResponse(id, responseText){
