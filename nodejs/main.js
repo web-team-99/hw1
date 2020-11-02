@@ -5,7 +5,7 @@ const cors = require("cors");
 const fs = require("fs");
 const crypto = require("crypto");
 const port = 3000;
-const FILE_PATH = "/home/hw1/nodejs/textFile.txt";
+const FILE_PATH =  "/home/hw1/go/data.txt";
 
 app.use(cors());
 
