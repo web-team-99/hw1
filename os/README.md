@@ -17,7 +17,7 @@ then you can run the setup_services.sh bash:
 
         sudo ./setup_services.sh
 
-or Run these commands in a terminal ::
+or Run these commands in a terminal instead of run bash file ::
 
     1.sudo mkdir -p /usr/bin/backend_api/go/
     2. sudo mv /home/hw1/go/main /usr/bin/backend_api/go/
