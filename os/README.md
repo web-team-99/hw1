@@ -1,4 +1,5 @@
 To install this services run these commands in a terminal ::
+
     0. Download or clone project and place it in /home directory.
     1. sudo mkdir -p /usr/bin/backend_api/go/
     2. sudo mv /home/hw1/go/main /usr/bin/backend_api/go/
