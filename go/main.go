@@ -14,6 +14,7 @@ import (
 
 const shaPath string = "/sha"
 const writePath string = "/write"
+const filePath string = "/home/hw1/go/data.txt"
 
 func main() {
 	http.HandleFunc("/", handler)
@@ -50,7 +51,7 @@ func getRequestOnWritePath(w *http.ResponseWriter, r *http.Request) {		//Handle 
 		writer(http.StatusNotAcceptable, []byte("Field should be number."), w)
 		return
 	}
-	line, err := readSpecLine("data.txt", lnumber)
+	line, err := readSpecLine(filePath, lnumber)
 	if err != nil {
 		writer(http.StatusInternalServerError, []byte(fmt.Sprint(err)), w)
 		return

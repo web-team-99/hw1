@@ -5,6 +5,7 @@ const cors = require("cors");
 const fs = require("fs");
 const crypto = require("crypto");
 const port = 3000;
+const FILE_PATH = "/home/hw1/nodejs/textFile.txt";
 
 app.use(cors());
 
@@ -17,7 +18,7 @@ app.get("/write", (req, res) => {
     if (num < 1 || num > 100) {
       res.status(406).send({message: "error! please enter a valid number."});
     } else {
-      fs.readFile("textFile.txt", "utf8", (err, data) => {
+      fs.readFile(FILE_PATH, "utf8", (err, data) => {
         if (err) throw err;
         res.send(data.split("\n")[num - 1]);
       });

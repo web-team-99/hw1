@@ -50,7 +50,7 @@ function onGoWriteClicked() {
       }
     )
     .catch((err) => {
-      showAlert(WRITE_ALERT_FAILED, err);
+      // showAlert(WRITE_ALERT_FAILED, err);
       console.log('Fetch Error :-S', err);
     });
 }
@@ -97,17 +97,17 @@ function XMLHttpRequestSender(url, method, params, showRespondElementID) {
     xhttp.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200){
         OnResponse(showRespondElementID, this.responseText);
-        document.getElementById(SHA_ALERT_FAILED).style.display = "none";
+        // document.getElementById(SHA_ALERT_FAILED).style.display = "none";
         return;
       }
-      if(this.readyState == 4 && this.status != 200 && this.status != 0){
-        showAlert(SHA_ALERT_FAILED, this.status + ": " + this.responseText);
-        return;
-      }
-      if(this.readyState == 4 && this.status == 0){
-        showAlert(SHA_ALERT_FAILED, "Connection Refused!!! Check your connection and try again.");
-        return;
-      }
+      // if(this.readyState == 4 && this.status != 200 && this.status != 0){
+      //   // showAlert(SHA_ALERT_FAILED, this.status + ": " + this.responseText);
+      //   return;
+      // }
+      // if(this.readyState == 4 && this.status == 0){
+      //   // showAlert(SHA_ALERT_FAILED, "Connection Refused!!! Check your connection and try again.");
+      //   return;
+      // }
     }
     xhttp.open(method, url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
