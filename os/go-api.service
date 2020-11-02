@@ -1,0 +1,11 @@
+[Unit]
+Description=Service for Go-Api
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=2s
+ExecStart=/usr/bin/backend_api/go/main
+
+[Install]
+WantedBy=multi-user.target

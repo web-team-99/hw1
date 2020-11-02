@@ -1,0 +1,11 @@
+[Unit]
+Description=Service for Node js api
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=2s
+ExecStart=/usr/bin/node /usr/bin/backend_api/nodejs/main.js
+
+[Install]
+WantedBy=multi-user.target

@@ -1,3 +1,5 @@
+const ip = "http://192.168.1.105"
+
 function onNodeWriteClicked() {
   let lineNum = document.getElementById("lineNum").value;
   if(lineNum > 100 || lineNum < 1){
@@ -5,7 +7,7 @@ function onNodeWriteClicked() {
     return;
   }
   let write = document.getElementById("node-write");
-  fetch('http://192.168.1.101/node/write?' + new URLSearchParams({ num: lineNum, }))
+  fetch(`${ip}/node/write?` + new URLSearchParams({ num: lineNum, }))
     // fetch('http://localhost:3000/write?'+ new URLSearchParams({num: lineNum,}))
     .then(
       function (response) {
@@ -32,7 +34,7 @@ function onGoWriteClicked() {
     return;
   }
   let write = document.getElementById("go-write");
-  fetch('http://192.168.1.101/go/go/write?' + new URLSearchParams({ lineNumber: lineNum, }))
+  fetch(`${ip}/go/write?` + new URLSearchParams({ lineNumber: lineNum, }))
   // fetch('http://127.0.0.1:8080/write?' + new URLSearchParams({ lineNumber: lineNum, }))  
   .then(
       function (response) {
@@ -69,8 +71,7 @@ function goBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://192.168.43.215/go/sha";
-  // let url = "http://127.0.0.1:8080/sha";
+  let url = `${ip}/go/sha`;
   XMLHttpRequestSender(url, POST, [fnum, snum], "go-response");
 }
 
@@ -81,8 +82,7 @@ function nodeBtnClicked() {
     performShake("sha-input-section");
     return;
   }
-  let url = "http://192.168.43.215/node/sha";
-  // let url = "http://127.0.0.1:3000/sha";
+  let url = `${ip}/node/sha`;
   XMLHttpRequestSender(url, POST, [fnum, snum], "node-response");
 }
 
