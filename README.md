@@ -5,6 +5,36 @@
  
  ![screenshot](https://github.com/web-team-99/hw1/blob/main/screenshot.png)
  
+ # dependencies
+ 
+install centos on your vm. this is your server.
+then install go, nodejs and nginx on centos.
+clone this project in
+
+    /home
+
+now, follow commands on 
+
+    /nginx-locust/README.md
+
+then follow commands on 
+
+    /os/README.md
+
+and also command on 
+
+    /front/README.md
+
+
+
+
+then run this on your server:
+
+    setenforce 0
+ 
+
+now you can type the server's ip on your browser (example: 192.168.1.103) and see the main page.
+
  # authors
  
 Roshans team:
